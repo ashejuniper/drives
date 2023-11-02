@@ -77,8 +77,27 @@ class DrivesAPI {
         );
     }
 
-    async info() {
-
+    /**
+     * Initializes a new storage at `storagePath`.
+     * If `storagePath` is not a valid path, `process.cwd` will be used
+     * instead.
+     * @param {string} src The Hyperdrive key.
+     * @param {string} get The path to the file within the Hyperdrive.
+     * @param {*} options The API call options.
+     */
+    async info(
+        key,
+        storagePath=process.cwd,
+        options={}
+    ) {
+        await info(
+            HypercoreIdEncoding.decode(
+                key
+            ),
+            options,
+            true,
+            storagePath
+        );
     }
 
     async init() {
