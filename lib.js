@@ -57,8 +57,24 @@ class DrivesAPI {
         );
     }
 
-    async get() {
-
+    /**
+     * Show the file content.
+     * @param {string} src The Hyperdrive key.
+     * @param {string} get The path to the file within the Hyperdrive.
+     * @param {*} options The API call options.
+     */
+    async get(
+        src,
+        path,
+        options={}
+    ) {
+        await get(
+            HypercoreIdEncoding.decode(
+                src
+            ),
+            path,
+            options
+        );
     }
 
     async info() {
